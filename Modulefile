@@ -1,6 +1,6 @@
 name    'conzar/check_run'
 version '0.2.2'
-source 'https://github.com/Conzar/check_run'
+source 'git://github.com/Conzar/check_run.git'
 author 'Michael Speth'
 license 'GPLv3'
 summary 'A helper module that checks if a command has been run'
