@@ -25,11 +25,24 @@ define check_run::task (
   $root_dir     = $::check_run::root_dir,
   $exec_command
 ){
+  anchor{"check_run::task::${title}::begin":}
+  case $::osfamily {
+    'debian': {
+      $touch_cmd_path = '/usr/bin/touch'
+    }
+    'redhat': {
+      $touch_cmd_path = '/bin/touch'
+    }
+    default: {
+      fail("Unsupported osfamily ${::osfamily}")
+    }
+  }
 
   include check_run # sets up the needed directory
 
   $command = "$check_run::command_path $root_dir/$task_name"
 
+## TODO, need to silence response if the check command if it doesn't actually change anything!!!!
   exec { $task_name:
     command       => $exec_command,
     user          => $user,
@@ -39,10 +52,15 @@ define check_run::task (
     cwd           => $cwd,
     onlyif        => $command,
     returns       => $returns,
+    require       => Anchor["check_run::task::${title}::begin"],
   }
-  ->
-  exec { "/usr/bin/touch $root_dir/$task_name":
+  exec { "$touch_cmd_path $root_dir/$task_name":
     onlyif  => $command,
+    user    => 'root',
+    group   => 'root',
     require => Exec[$task_name],
+  }
+  anchor{"check_run::task::${title}::end":
+    require => Exec [ "$touch_cmd_path $root_dir/$task_name"],
   }
 }

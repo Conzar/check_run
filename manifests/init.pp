@@ -33,7 +33,7 @@ class check_run {
 
   file{ $command_path:
     ensure => file,
-    mode   => '0744',
+    mode   => '0755',
     source => "puppet:///modules/check_run/$command_name",
     require => File[$root_dir],
   }
