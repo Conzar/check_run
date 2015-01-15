@@ -1,11 +1,15 @@
 # check_run
 
-Author: Michael Speth <spethm@landcareresearch.co.nz>
+[![Build Status](https://travis-ci.org/Conzar/check_run.svg?branch=master)](https://travis-ci.org/Conzar/check_run)
 
-## About
+## Overview
 
-Manages tasks checking if a task has run or if a task should run.  This is primarily useful for running a one off command for 
-installation.
+Manages tasks checking if a task has run or if a task should run.
+
+## Module Description
+
+Runs a command only once (using a file to incidate if a task was run).
+This is primarily useful for running a one off command for installation.
 
 ## Usage
 

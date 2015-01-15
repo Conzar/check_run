@@ -23,18 +23,32 @@
 #
 class check_run {
 
-  $root_dir = '/opt/check_run'
-  $command_name = 'check_run.bash'
-  $command_path = "$root_dir/$command_name"
+  anchor{"check_run::${title}::begin":}
+  case $::osfamily {
+    'debian','redhat': {
+      $root_dir = '/opt/check_run'
+      $command_name = 'check_run.bash'
+      $command_path = "${root_dir}/${command_name}"
+    }
+    'windows':{
+      $root_dir = '/opt/check_run'
+      $command_name = 'check_run.bash'
+      $command_path = "${root_dir}/${command_name}"
+    }
+    default: {
+      fail("Unsupported osfamily ${::osfamily}")
+    }
+  }
+
 
   file{ $root_dir:
     ensure => directory,
   }
 
   file{ $command_path:
-    ensure => file,
-    mode   => '0755',
-    source => "puppet:///modules/check_run/$command_name",
+    ensure  => file,
+    mode    => '0755',
+    source  => "puppet:///modules/check_run/${command_name}",
     require => File[$root_dir],
   }
 }

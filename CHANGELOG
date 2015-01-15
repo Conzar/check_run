@@ -1,7 +1,12 @@
-2014/10-17 Version 0.2.3
+2015-01-16 Version 0.2.4
+* Initial start of support for windows.
+* Added Travis CI Integration
+
+2014-10-17 Version 0.2.3
 * Added support for redhat family
 * Added anchor pattern
 * Moved from Modulefile to metadata.json
+* Added OS Support to metadata
 
 2014-07-23 Version 0.2.2
 * Created a github repo and uploaded to this repo

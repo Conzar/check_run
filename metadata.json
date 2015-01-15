@@ -1,18 +1,17 @@
 {
+  "name": "conzar-check_run",
+  "version": "0.2.4",
   "author": "Michael Speth",
   "summary": "A helper module that checks if a command has been run and runs the command only once.",
-  "license": "GPLv3",
-  "name": "conzar-check_run",
-  "project_page": "https://github.com/Conzar/check_run",
-  "requirements": [],
+  "license": "GPL-3.0+",
   "source": "git://github.com/Conzar/check_run.git",
-  "tags": [],
-  "version": "0.2.3",
-  "dependencies": [],
+  "project_page": "https://github.com/Conzar/check_run",
+  "issues_url": "https://github.com/Conzar/check_run/issues",
   "operatingsystem_support": [
   	{ "operatingsystem":"Centos",
 	  "operatingsystemrelease":[ "5.0", "6.0" ] },
   	{ "operatingsystem": "Ubuntu",
   	  "operatingsystemrelease": [ "12.04", "14.04" ] }
-	]
+	],
+  "dependencies": []
 }
