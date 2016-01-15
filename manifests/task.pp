@@ -79,6 +79,6 @@ define check_run::task (
     require => Exec[$task_name],
   }
   anchor{"check_run::task::${title}::end":
-    require => Exec [ "${touch_cmd_path} ${root_dir}/${task_name}"],
+    require => Exec["${touch_cmd_path} ${root_dir}/${task_name}"],
   }
 }
